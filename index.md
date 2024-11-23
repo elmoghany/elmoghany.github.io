@@ -6,7 +6,7 @@ layout: homepage
 # About Me
 I am currently a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en)
 
-I have 9 years of mixed industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong> and received my BSc. in Electronics and Communications Engineering from Alexandria University.
+I have <strong>9 years</strong> of mixed industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong> and received my BSc. in Electronics and Communications Engineering from Alexandria University.
 <h2 style="margin: 40px 0px 10px;"></h2>
 <!--[National University of Singapore](https://www.comp.nus.edu.sg/). My biography is [here](./biography/).
 -->
@@ -18,6 +18,7 @@ I have 9 years of mixed industry experience in machine learning, software and ha
 - Generative Models: Image and Video Generation, Story Visualization, Diffusion Generation
 - Vision and Language Models: Multimodal Large Language Models (LLMs)
 - LLMs Optimization: Pruning, Quantization and Architectural optimization
+- Theoretical and Architectural Models Discovery
 
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}

@@ -1,4 +1,4 @@
-<h2 style="margin: 60px 0px 10px;">News</h2>
+<h2 style="margin: 60px 0px 0px;">News</h2>
 
 <ul>
 <li><strong>[Oct. 2024]</strong> Joined KAUST as a research intern <a href="https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group">KAUST Computer Vision, Core AI Research</a>!</li>
