@@ -23,6 +23,7 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
 {% include_relative _includes/preprints.md %}
+
 # Academic and Industry Experience
 - [2024 - present] Research Intern <strong>@ KAUST</strong>
 - [2022 - 2023] Software Engineer & Co-founder <strong>@ Cammedar, AI Speech Recognition</strong>
