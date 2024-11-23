@@ -6,7 +6,7 @@ layout: homepage
 # About Me
 I am currently a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en)
 
-I have 9 years of mixed industry experience in machine learning, software and hardware. From 2019 till 2023, I started 2 startups. I worked for <strong>Intel</strong> as a Design and Automation Engineer from 2017 till 2019. And studied <strong>Computer Science at San Jose State University</strong> from 2016 till 2017. I worked for Sonics Inc (Acquired by Meta) as a Solutions Architect from 2013 till 2015. I received my BSc. in Electronics and Communications Engineering from Alexandria University in 2013.
+I have 9 years of mixed industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong> and received my BSc. in Electronics and Communications Engineering from Alexandria University.
 <h2 style="margin: 40px 0px 10px;"></h2>
 <!--[National University of Singapore](https://www.comp.nus.edu.sg/). My biography is [here](./biography/).
 -->
@@ -28,6 +28,7 @@ I have 9 years of mixed industry experience in machine learning, software and ha
 - [2019 - 2022] CEO & Co-founder <strong>@ Curawella, Personalized Healthcare Systems</strong>
 - [2017 - 2019] Design and Automation Engineer <strong>@ Intel</strong>
 - [2016 - 2017] Studied Computer Science <strong>@ San Jose State University</strong>
+- [2015 - 2016] Software Engineer & founder <strong>@ Dysfunctional Muscles Simulator</strong>
 - [2013 - 2015] Solutions Architect <strong>@ Sonics Inc (Acquired by Meta)</strong>
 [O
 - [2008 - 2013] BSc. in Electronics and Communications Engineering <strong>@ Alexandria University</strong>
