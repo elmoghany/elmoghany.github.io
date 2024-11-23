@@ -31,5 +31,4 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 - [2016 - 2017] Studied Computer Science <strong>@ San Jose State University</strong>
 - [2015 - 2016] Software Engineer & founder <strong>@ Dysfunctional Muscles Simulator</strong>
 - [2013 - 2015] Solutions Architect <strong>@ Sonics Inc (Acquired by Meta)</strong>
-[O
 - [2008 - 2013] BSc. in Electronics and Communications Engineering <strong>@ Alexandria University</strong>
