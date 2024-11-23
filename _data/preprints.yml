@@ -1,27 +1,34 @@
 main:
+  - title: Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning (from scratch using Vision Transformer)
+    code: https://github.com/elmoghany/DL-PyTorch-Pathogenic-Bateria-antibiotic-prediction-using-raman-spectrometer-stanford-dataset
+    page: https://www.nature.com/articles/s41467-019-12898-9
+    pdf: https://arxiv.org/pdf/1901.07666 
+    image: assets/preprint/raman-spectroscopy.jpg
 
-  - title: "Learning a Category-level Object Pose Estimator without Pose Annotations"
-    authors: Fengrui Tian, <strong>Yaoyao Liu</strong>, Alan Yuille, Adam Kortylewski, Yueqi Duan, Shaoyi Du, Angtian Wang
-    conference_short: Preprint
-    conference: Preprint.
-    pdf: https://arxiv.org/pdf/2404.05626
-    bibtex: https://dblp.org/rec/journals/corr/abs-2404-05626.html?view=bibtex
-    image: https://img.yliu.me/teaser/pose_estimator_wo_pose_overview.png
+  - title: A Neural Algorithm of Artistic Style
+    code: https://github.com/elmoghany/DL-PyTorch-Style-Transfer-Image-Video-Generation
+    page: https://arxiv.org/abs/1508.06576
+    pdf: https://arxiv.org/pdf/1508.06576
+    image: assets/preprint/artistic-style.png
 
-  - title: Prompt-Based Exemplar Super-Compression and Regeneration for Class-Incremental Learning
-    authors: Ruxiao Duan, <strong>Yaoyao Liu</strong>, Jieneng Chen, Adam Kortylewski, Alan Yuille
-    conference_short: Preprint
-    conference: Preprint.
-    pdf: https://arxiv.org/pdf/2311.18266.pdf
-    bibtex: https://dblp.org/rec/journals/corr/abs-2311-18266.html?view=bibtex
-    code: https://github.com/KerryDRX/ESCORT
-    image: https://img.yliu.me/arxiv_23_2.png
+  - title: Attention is all you need (from scratch with PyTorch)
+    code: https://github.com/elmoghany/DL-PyTorch-Transformer-Implementation-From-Scratch
+    page: https://arxiv.org/abs/1706.03762
+    pdf: https://arxiv.org/pdf/1706.03762
+    image: assets/preprint/attention.png
+  
+  - title: Healthcare Speech Recognition via Youtube Videos + video demo
+    code: https://github.com/elmoghany/create-speech-recognition-audio-word-by-word-dataset-from-youtube
+    pdf: https://github.com/elmoghany/create-speech-recognition-audio-word-by-word-dataset-from-youtube
+    image: assets/preprint/youtube-project.jpg
 
-  - title: Continual Adversarial Defense
-    authors: Qian Wang, <strong>Yaoyao Liu</strong>, Hefei Ling, Yingwei Li, Qihao Liu, Ping Li, Jiazhong Chen, Alan Yuille, Ning Yu
-    conference_short: Preprint
-    conference: Preprint.
-    pdf: https://arxiv.org/pdf/2312.09481.pdf
-    bibtex: https://dblp.org/rec/journals/corr/abs-2312-09481.html?view=bibtex
-    code: https://github.com/cc13qq/CAD
-    image: https://img.yliu.me/arxiv_CAD.png
+  - title: LLM Pruning
+    code: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
+    pdf: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
+    image: assets/preprint/pruning.png
+
+  - title: LLM 4bit Quantization
+    code: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
+    pdf: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
+    image: assets/preprint/quantization-overview.jpg
+
