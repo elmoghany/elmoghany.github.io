@@ -19,6 +19,7 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 - Vision and Language Models: Multimodal Large Language Models (LLMs)
 - LLMs Optimization: Pruning, Quantization and Architectural optimization
 - Theoretical and Architectural Models Discovery
+- Robotics Perception and Humanoid Robotics
 
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
