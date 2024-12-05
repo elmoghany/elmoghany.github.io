@@ -16,8 +16,8 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 
 # Research Interests
 - Generative Models: Image and Video Generation, Story Visualization, Diffusion Generation
-- Vision and Language Models: Multimodal Large Language Models (LLMs)
-- LLMs Optimization: Pruning, Quantization and Architectural optimization
+- Vision (VLMs) and Language Models: Multimodal Large Language Models (LLMs)
+- Efficient LLMs and Architectural Optimization
 - Theoretical and Architectural Models Discovery
 - Robotics Perception and Humanoid Robotics
 
