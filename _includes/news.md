@@ -1,7 +1,7 @@
 <h2 style="margin: 60px 0px 0px;">News</h2>
 
 <ul>
-<li><strong>[Dec. 2024]</strong> Became a 2025 GEM Fellow, funding my PhD studies! <a href="https://www.gemfellowship.org/">GEM Fellowship</a>!</li>
+<li><strong>[Dec. 2024]</strong> Got accepted in 2025 <a href="https://www.gemfellowship.org/">GEM Fellowship</a> funding my PhD studies.</li>
 <li><strong>[Oct. 2024]</strong> Joined KAUST as a research intern <a href="https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group">KAUST Computer Vision, Core AI Research</a>!</li>
  
 <!--
