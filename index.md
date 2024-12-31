@@ -4,6 +4,8 @@ layout: homepage
 
 <h1 id="about-me"></h1>
 # About Me
+Awarded GEM Fellowship for 2025 PhD!
+
 I am currently a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en)
 
 I have <strong>9 years</strong> of mixed industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong> and received my BSc. in Electronics and Communications Engineering from Alexandria University.
@@ -15,11 +17,11 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 -->
 
 # Research Interests
-- Generative Models: Image and Video Generation, Story Visualization, Diffusion Generation
-- Vision (VLMs) and Language Models: Multimodal Large Language Models (LLMs)
-- Theoretical and Architectural Models Discovery
-- Robotics Perception and Humanoid Robotics
-- Robotics Decision Making and Autonomous Agents
+- Generative AI: Image and Video Generation, Story Visualization, Diffusion Generation
+- Vision Language Models (VLMs) and Multimodal Large Language Models (MLLM)
+- Theoretical and Architectural Models Discovery: Models interpretability and robustness
+- Robotics Manipulation and Perception
+- Humanoid Robotics and Autonomous Agents
 
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
