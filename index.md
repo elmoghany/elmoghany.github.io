@@ -4,7 +4,7 @@ layout: homepage
 
 <h1 id="about-me"></h1>
 # About Me
-Awarded GEM Fellowship for 2025 PhD!
+<strong>Awarded GEM Fellowship for 2025 PhD!</strong>
 
 I am currently a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en)
 

@@ -1,4 +1,34 @@
 main:
+  - title: Latent Diffusion Model From Scratch
+    code: https://github.com/elmoghany/Latent-Diffusion-From-Scratch
+    page: https://arxiv.org/abs/2112.10752
+    pdf: https://arxiv.org/pdf/2112.10752
+    image: assets/preprint/latent-diffusion.png
+
+  - title: Finetuning SD with LoRA (Low Rank Adaptation)
+    code: https://github.com/elmoghany/Attaching-LoRA-to-Stable-Diffusion
+    page: https://arxiv.org/abs/2106.09685
+    pdf: https://arxiv.org/pdf/2106.09685
+    image: assets/preprint/lora.png
+
+  - title: Denoising Diffusion Implicit Mode (DDIM) and Classifier-Free Guidance (CFG)
+    code: https://github.com/elmoghany/DDIM-Denoising-Diffusion-Implicit-Model
+    page: https://arxiv.org/abs/2010.02502
+    pdf: https://arxiv.org/abs/2207.12598
+    image: assets/preprint/ddim.png
+
+  - title: DDPM (Denoising Diffusion Probabilistic Model)
+    code: https://github.com/elmoghany/DDPM-Denoising-Diffusion-Probabilistic-Model
+    page: https://arxiv.org/abs/2006.11239
+    pdf: https://arxiv.org/pdf/2006.11239
+    image: assets/preprint/ddpm.png
+
+  - title: Finetuning SD with ControlNet
+    code: https://github.com/elmoghany/Finetuning-Stable-Diffusion-With-ControlNet
+    page: https://arxiv.org/abs/2302.05543
+    pdf: https://arxiv.org/pdf/2302.05543
+    image: assets/preprint/controlNet.png
+
   - title: Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning (from scratch using Vision Transformer)
     code: https://github.com/elmoghany/DL-PyTorch-Pathogenic-Bateria-antibiotic-prediction-using-raman-spectrometer-stanford-dataset
     page: https://www.nature.com/articles/s41467-019-12898-9
