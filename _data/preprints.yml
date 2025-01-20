@@ -1,58 +1,58 @@
 main:
-  - title: Latent Diffusion Model From Scratch
+  - title: Latent Diffusion Model From Scratch **In Progress**
     code: https://github.com/elmoghany/Latent-Diffusion-From-Scratch
     pdf: https://arxiv.org/pdf/2112.10752
     image: assets/preprint/latent-diffusion.png
 
-  - title: Finetuning SD with LoRA (Low Rank Adaptation)
+  - title: Finetuning SD with LoRA (Low Rank Adaptation) **Jan'25**
     code: https://github.com/elmoghany/Attaching-LoRA-to-Stable-Diffusion
     pdf: https://arxiv.org/pdf/2106.09685
     image: assets/preprint/lora.png
 
-  - title: Denoising Diffusion Implicit Mode (DDIM) and Classifier-Free Guidance (CFG)
+  - title: Denoising Diffusion Implicit Mode (DDIM) and Classifier-Free Guidance (CFG) **Jan'25**
     code: https://github.com/elmoghany/DDIM-Denoising-Diffusion-Implicit-Model
     pdf: https://arxiv.org/abs/2010.02502
     image: assets/preprint/ddim.png
 
-  - title: DDPM (Denoising Diffusion Probabilistic Model)
+  - title: DDPM (Denoising Diffusion Probabilistic Model) **Jan'25**
     code: https://github.com/elmoghany/DDPM-Denoising-Diffusion-Probabilistic-Model
     pdf: https://arxiv.org/pdf/2006.11239
     image: assets/preprint/ddpm.png
 
-  - title: Finetuning SD with ControlNet
+  - title: Finetuning SD with ControlNet **Jan'25**
     code: https://github.com/elmoghany/Finetuning-Stable-Diffusion-With-ControlNet
     pdf: https://arxiv.org/pdf/2302.05543
     image: assets/preprint/controlNet.png
 
-  - title: Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning (from scratch using Vision Transformer)
+  - title: Rapid identification of pathogenic bacteria using Raman spectroscopy and deep learning (from scratch using Vision Transformer) **Oct'24**
     code: https://github.com/elmoghany/DL-PyTorch-Pathogenic-Bateria-antibiotic-prediction-using-raman-spectrometer-stanford-dataset
     page: https://www.nature.com/articles/s41467-019-12898-9
     pdf: https://arxiv.org/pdf/1901.07666 
     image: assets/preprint/raman-spectroscopy.jpg
 
-  - title: A Neural Algorithm of Artistic Style
+  - title: A Neural Algorithm of Artistic Style **Sep'24**
     code: https://github.com/elmoghany/DL-PyTorch-Style-Transfer-Image-Video-Generation
     page: https://arxiv.org/abs/1508.06576
     pdf: https://arxiv.org/pdf/1508.06576
     image: assets/preprint/artistic-style.png
 
-  - title: Attention is all you need (from scratch with PyTorch)
+  - title: Attention is all you need (from scratch with PyTorch) **Sep'24**
     code: https://github.com/elmoghany/DL-PyTorch-Transformer-Implementation-From-Scratch
     page: https://arxiv.org/abs/1706.03762
     pdf: https://arxiv.org/pdf/1706.03762
     image: assets/preprint/attention.png
   
-  - title: Healthcare Speech Recognition via Youtube Videos + video demo
+  - title: Healthcare Speech Recognition via Youtube Videos + video demo **Nov'23**
     code: https://github.com/elmoghany/create-speech-recognition-audio-word-by-word-dataset-from-youtube
     pdf: https://github.com/elmoghany/create-speech-recognition-audio-word-by-word-dataset-from-youtube
     image: assets/preprint/youtube-project.jpg
 
-  - title: LLM Pruning
+  - title: LLM Pruning **Nov'24**
     code: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
     pdf: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
     image: assets/preprint/pruning.png
 
-  - title: LLM 4bit Quantization
+  - title: LLM 4bit Quantization **Nov'24**
     code: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
     pdf: https://github.com/elmoghany/Pruning-And-Quantization-for-LLMs-PAQLLM
     image: assets/preprint/quantization-overview.jpg
