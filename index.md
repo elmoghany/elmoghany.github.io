@@ -29,7 +29,7 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 
 # Academic and Industry Experience
 - [2024 - present] Research Intern <strong>@ KAUST</strong>
-- [2022 - 2023] Software Engineer & Co-founder <strong>@ Cammedar, AI Speech Recognition</strong>
+- [2022 - 2023] Machine Learning Engineer & Co-founder <strong>@ Cammedar, AI Speech Recognition</strong>
 - [2019 - 2022] CEO & Co-founder <strong>@ Curawella, Personalized Healthcare Systems</strong>
 - [2017 - 2019] Design and Automation Engineer <strong>@ Intel</strong>
 - [2016 - 2017] Studied Computer Science <strong>@ San Jose State University</strong>
