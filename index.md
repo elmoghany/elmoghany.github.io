@@ -20,6 +20,7 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 - Generative AI: Image and Video Generation, Story Visualization, Diffusion Generation
 - Vision Language Models (VLMs) and Multimodal Large Language Models (MLLM)
 - Theoretical and Architectural Models Discovery: Models interpretability and robustness
+- Healthcare Vision-Language models, i.e. histopathology
 - Robotics Manipulation and Perception
 - Humanoid Robotics and Autonomous Agents
 
