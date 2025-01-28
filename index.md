@@ -17,10 +17,10 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 -->
 
 # Research Interests
-- Generative AI: Image and Video Generation, Story Visualization, Diffusion Generation
-- Vision Language Models (VLMs) and Multimodal Large Language Models (MLLM)
-- Large Language Models (LLMs) interpretability, robustness, generalizability and theory
-- Healthcare Vision-Language models, i.e. histopathology
+- Generative-AI (VLM): Image and Video Generation, Story Visualization, Diffusion Generation
+- Image & Video Understanding and Question-Answering
+- Large Language Models (LLMs) Interpretability, Robustness, Generalizability and Theory
+- Healthcare Vision-Language Models, i.e. Histopathology
 - Robotics Manipulation and Perception
 - Humanoid Robotics and Autonomous Agents
 
