@@ -7,9 +7,9 @@ affiliation_link: https://vision-cair.kaust.edu.sa/computer-vision-core-ai-resea
 email: m.osama.elmoghany@gmail.com
 
 # Search Engine Optimization (SEO)
-keywords: Mohamed Elmoghany, Elmoghany
+keywords: Mohamed Elmoghany, Elmoghany, generative AI, curawella, cammedar, kaust, sjsu, llm, vlm, diffusion
 canonical: https://elmoghany.github.io
-description: Mohamed Elmoghany is a machine learning researcher with interests in image and video generation, LLMs optmization, machine learning theoritical and architectural development and computational AI.
+description: Mohamed Elmoghany is a machine learning researcher with interests in generative AI, image and video generation, LLMs optmization, machine learning theoritical and architectural development.
 
 # The option is used to enable the Johns Hopkins template.
 enable_hopkins_logo: true
@@ -28,7 +28,7 @@ github_link: https://github.com/elmoghany/
 avatar: assets/profile/profile.jpg
 
 # Footnotes
-footnote: (updated Jan'25) create your website using this template
+footnote: (updated Feb'25) create your website using this template
 footnote_link: https://github.com/yaoyao-liu/minimal-light
 
 # Analytics
