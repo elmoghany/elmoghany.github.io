@@ -1,8 +1,8 @@
 main:
-  - title: Latent Diffusion Model From Scratch **In Progress**
-    code: https://github.com/elmoghany/Latent-Diffusion-From-Scratch
-    pdf: https://arxiv.org/pdf/2112.10752
-    image: assets/preprint/latent-diffusion.png
+  #  - title: Latent Diffusion Model From Scratch **In Progress**
+  #  code: https://github.com/elmoghany/Latent-Diffusion-From-Scratch
+  #  pdf: https://arxiv.org/pdf/2112.10752
+  #  image: assets/preprint/latent-diffusion.png
 
   - title: Finetuning SD with LoRA (Low Rank Adaptation) **Jan'25**
     code: https://github.com/elmoghany/Attaching-LoRA-to-Stable-Diffusion
