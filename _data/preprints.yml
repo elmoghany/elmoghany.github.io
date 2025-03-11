@@ -1,5 +1,5 @@
 main:
-  - title: Multimodal Vision Language Model implemented from Scratch
+  - title: Multimodal Vision Language Model implemented from Scratch **Mar'25**
     code: https://github.com/elmoghany/vision-language-model-v1
     pdf: https://arxiv.org/pdf/2407.07726
     image: assets/preprint/vlm1.png
