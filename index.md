@@ -4,7 +4,7 @@ layout: homepage
 
 <h1 id="about-me"></h1>
 # About Me
-<strong>Awarded GEM Fellowship for 2025 PhD!</strong>
+<strong>Accepted in Adobe Research internship!</strong>
 
 I am currently a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en)
 
@@ -20,15 +20,15 @@ I have <strong>9 years</strong> of mixed industry experience in machine learning
 - Large Language Models (LLMs): Interpretability, Robustness, Generalizability and Theory
 - Generative-AI (VLM): Image and Video Generation, Story Visualization, Diffusion Generation
 - Image & Video Understanding and Question-Answering
-- Robotics Manipulation and Perception
-- Humanoid Robotics and Autonomous Agents
+- Embodied Robotics leveraging LLMs
 
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
 {% include_relative _includes/preprints.md %}
 
 # Academic and Industry Experience
-- [2024 - present] Research Intern <strong>@ KAUST</strong>
+- [2025 - 2025] Research Scientist Intern <strong>@ Adobe Research</strong>
+- [2024 - 2025] Research Scientist Intern <strong>@ KAUST</strong>
 - [2022 - 2023] Machine Learning Engineer & Co-founder <strong>@ Cammedar, AI Speech Recognition</strong>
 - [2019 - 2022] CEO & Co-founder <strong>@ Curawella, Personalized Healthcare Systems</strong>
 - [2017 - 2019] Design and Automation Engineer <strong>@ Intel</strong>
