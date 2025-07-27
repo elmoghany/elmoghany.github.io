@@ -1,7 +1,7 @@
 main:
   - title: "MAGNET: A Multi-agent Framework for Finding Audio-Visual Needles by Reasoning over Multi-Video Haystacks"
     authors: Sanjoy Chowdhury, <strong>Mohamed Elmoghany</strong>, Yohan Abeysinghe, Junjie Fei, Sayan Nag, Salman Khan, Mohamed Elhoseiny, Dinesh Manocha
-    conference_short: @ top tier conference
+    conference_short: Top tier conference
     conference: Good feedback @ top tier conference
     pdf: https://www.arxiv.org/abs/2506.07016 
     page: https://schowdhury671.github.io/magnet_project/
