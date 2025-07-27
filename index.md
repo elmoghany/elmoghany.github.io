@@ -18,7 +18,6 @@ I have <strong> over 10 years</strong> of mixed industry experience in machine l
 - Generative-AI: Image and Video Generation, Story Visualization, Diffusion and 3D Generation
 - Image & Video Understanding and Question-Answering
 - Large Language Models (LLMs): Interpretability, Robustness, Generalizability and Theory
-- Large Language Models (LLMs): Interpretability, Robustness, Generalizability and Theory
 - Robotics leveraging LLMs, VLMs, Diffusion and 3D
 
 {% include_relative _includes/news.md %}
