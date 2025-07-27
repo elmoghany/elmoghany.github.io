@@ -9,14 +9,14 @@ main:
 
   - title: "A Survey on Long-Video Storytelling Generation, Architectures, Consistency, and Cinematic Quality"
     authors: <strong>Mohamed Elmoghany</strong>, Ryan Rossi, Seunghyun Yoon, Subhojyoti Mukherjee, Eslam Bakr, Puneet Mathur, Gang Wu, Viet Dac Lai, Nedim Lipka, Ruiyi Zhang, Varun Manjunatha, Chien Nguyen, Daksh Dangi, Abel Salinas, Mohammad Taesiri, Hongjie Chen, Xiaolei Huang, Joe Barrow, Nesreen Ahmed, Hoda Eldardiry, Namyong Park, Yu Wang, Jaemin Cho, Anh Totti Nguyen, Zhengzhong Tu, Thien Nguyen, Dinesh Manocha, Mohamed Elhoseiny, Franck Dernoncourt
-    conference_short: ICCVW
+    conference_short: ICCVW'25
     conference: International Conference on Computer Vision, Workshop on Long Multi-Scene Video Foundations, Generation, Understanding and Evaluation, 2025
     pdf: https://arxiv.org/pdf/2507.07202
     image: assets/teaser/taxonomy.png 
 
   - title: "FPGA implementation of high speed XTS-AES for data storage devices"
     authors: <strong>Mohamed Elmoghany</strong>, Mohamed Diab, Moustafa Kassem, Mustafa Khairallah, Omar El Shahat, Wael Sharkasy
-    conference_short: ICITST
+    conference_short: ICITST'11
     conference: International Conference for Internet Technology and Secured Transactions, 2011
     pdf:   assets/pdf/aes-paper.pdf
     page: https://ieeexplore.ieee.org/document/6148354
