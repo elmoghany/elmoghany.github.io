@@ -16,7 +16,7 @@ I have <strong> over 10 years</strong> of mixed industry experience in machine l
 
 # Research Interests
 - Generative-AI: Image and Video Generation, Story Visualization, Diffusion and 3D Generation
-- Image & Video Understanding and Question-Answering
+- Image, Video & 3D Understanding and Question-Answering
 - Large Language Models (LLMs): Interpretability, Robustness, Generalizability and Theory
 - Robotics leveraging LLMs, VLMs, Diffusion and 3D
 - ML for healthcare
