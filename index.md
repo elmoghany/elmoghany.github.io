@@ -19,6 +19,7 @@ I have <strong> over 10 years</strong> of mixed industry experience in machine l
 - Image & Video Understanding and Question-Answering
 - Large Language Models (LLMs): Interpretability, Robustness, Generalizability and Theory
 - Robotics leveraging LLMs, VLMs, Diffusion and 3D
+- ML for healthcare
 
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
