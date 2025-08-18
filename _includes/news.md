@@ -1,7 +1,7 @@
 <h2 style="margin: 60px 0px 0px;">News</h2>
 
 <ul>
-<li><strong>[Jul. 2025]</strong> Achieved Adobe research project goals, background consistency in unlimited video generation</li>
+<li><strong>[Aug. 2025]</strong> Achieved Adobe research project goals, background consistency in unlimited video generation</li>
 <li><strong>[Jul. 2025]</strong> Adobe Paper published in ICCV'25</li>
 <li><strong>[Jul. 2025]</strong> KAUST Paper received good feedback in NeurIPS'25</li>
 <li><strong>[May 2025]</strong> Joined Adobe Research as a Machine Learning Research Scientist Intern <a href="https://research.adobe.com/"></a>!</li>
