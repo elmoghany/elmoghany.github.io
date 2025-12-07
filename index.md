@@ -4,7 +4,7 @@ layout: homepage
 
 <h1 id="about-me"></h1>
 # About Me
-I published 4 papers. I am currently a research intern at Adobe Research, supervised by [Franck Dernoncourt (MIT PhD)](https://scholar.google.com/citations?user=kz2aIc8AAAAJ&hl=en) in which I submitted a paper to a top-tier conference and published in ICCV. Previously, I was a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en) in which I published a NeurIPS paper.
+I published 4 papers. I am currently a research intern at Adobe Research, supervised by [Franck Dernoncourt (MIT PhD)](https://scholar.google.com/citations?user=kz2aIc8AAAAJ&hl=en) in which I submitted a paper to a top-tier conference and published in ICCV. Previously, I was a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en) in which I published a NeurIPS paper. My very first paper was during my undergrad.
 
 I have <strong> over 10 years</strong> of multi-disciplinary research, entrepreneurship and industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong>, was top 1% and and received my BSc. in Electronics and Communications Engineering from Alexandria University.
 
