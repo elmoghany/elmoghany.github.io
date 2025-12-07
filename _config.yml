@@ -1,13 +1,13 @@
 # Basic Information 
 title: Mohamed Elmoghany
 #position: Research Intern @ Adobe Research
-affiliation: Research Scientist Internship at Adobe Research
-affiliation_link: https://research.adobe.com/
+affiliation: Research Scientist Staff at Stanford
+affiliation_link: https://stanford.edu/
 #affiliation_logo: ./assets/logo/logo.png
 email: m.osama.elmoghany@gmail.com
 
 # Search Engine Optimization (SEO)
-keywords: Mohamed Elmoghany, Elmoghany, generative AI, curawella, cammedar, kaust, sjsu, llm, vlm, diffusion
+keywords: Mohamed Elmoghany, Elmoghany, robotics, reinforcement learning, perception, generative AI, curawella, cammedar, kaust, sjsu, llm, vlm, diffusion
 canonical: https://elmoghany.github.io
 description: Mohamed Elmoghany is a machine learning researcher with interests in generative AI, image and video generation, LLMs optmization, machine learning theoritical and architectural development.
 
@@ -28,7 +28,7 @@ github_link: https://github.com/elmoghany/
 avatar: assets/profile/profile.jpg
 
 # Footnotes
-footnote: (updated Jul'25) create your website using this template
+footnote: (updated Nov'25) create your website using this template
 footnote_link: https://github.com/yaoyao-liu/minimal-light
 
 # Analytics

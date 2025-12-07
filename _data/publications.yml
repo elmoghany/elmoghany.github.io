@@ -1,15 +1,22 @@
 main:
+  - title: "InfinityStory: Unlimited Video Generation with World Consistency and Character-Aware Shot Transitions"
+    authors: <strong>Mohamed Elmoghany,</srong> Liangbing Zhao, Xiaoqian Shen, Subhojyoti Mukherjee, Yang Zhou, Gang Wu, Viet Dac Lai, Seunghyun Yoon, Ryan A. Rossi, Abdullah Rashwan, Puneet Mathur, Varun Manjunatha, Daksh Dangi, Nedim Lipka, Trung Bui, Krishna Kumar Singh, Ruiyi Zhang, Xiaolei Huang, Jaemin Cho, Yu Wang, Namyong Park, Zhengzhong Tu, Hongjie Chen, Hoda Eldardiry, Nesreen K. Ahmed, Thien Huu Nguyen, Dinesh Manocha, Mohamed Elhoseiny, Franck Dernoncourt
+    conference_short: Submitted @ top-tier conference
+    conference: pre-print
+    pdf: 
+    page: 
+
   - title: "MAGNET: A Multi-agent Framework for Finding Audio-Visual Needles by Reasoning over Multi-Video Haystacks"
     authors: Sanjoy Chowdhury, <strong>Mohamed Elmoghany</strong>, Yohan Abeysinghe, Junjie Fei, Sayan Nag, Salman Khan, Mohamed Elhoseiny, Dinesh Manocha
-    conference_short: Top tier conference
-    conference: Good feedback @ top tier conference
+    conference_short: NerIPS'25
+    conference: Conference on Neural Information Processing Systems, 2025
     pdf: https://www.arxiv.org/abs/2506.07016 
     page: https://schowdhury671.github.io/magnet_project/
     image: assets/teaser/magnet-figure.png
 
   - title: "A Survey on Long-Video Storytelling Generation, Architectures, Consistency, and Cinematic Quality"
     authors: <strong>Mohamed Elmoghany</strong>, Ryan Rossi, Seunghyun Yoon, Subhojyoti Mukherjee, Eslam Bakr, Puneet Mathur, Gang Wu, Viet Dac Lai, Nedim Lipka, Ruiyi Zhang, Varun Manjunatha, Chien Nguyen, Daksh Dangi, Abel Salinas, Mohammad Taesiri, Hongjie Chen, Xiaolei Huang, Joe Barrow, Nesreen Ahmed, Hoda Eldardiry, Namyong Park, Yu Wang, Jaemin Cho, Anh Totti Nguyen, Zhengzhong Tu, Thien Nguyen, Dinesh Manocha, Mohamed Elhoseiny, Franck Dernoncourt
-    conference_short: ICCV'25
+    conference_short: ICCV'25 workshop
     conference: International Conference on Computer Vision, Workshop on Long Multi-Scene Video Foundations, Generation, Understanding and Evaluation, 2025
     pdf: https://arxiv.org/pdf/2507.07202
     image: assets/teaser/taxonomy.png 

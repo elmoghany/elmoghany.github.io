@@ -4,9 +4,10 @@ layout: homepage
 
 <h1 id="about-me"></h1>
 # About Me
-I am currently a research intern at Adobe Research, supervised by [Franck Dernoncourt (MIT PhD)](https://scholar.google.com/citations?user=kz2aIc8AAAAJ&hl=en). Previously, I was a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en)
+I published 4 papers. I am currently a research intern at Adobe Research, supervised by [Franck Dernoncourt (MIT PhD)](https://scholar.google.com/citations?user=kz2aIc8AAAAJ&hl=en) in which I submitted a paper to a top-tier conference and published in ICCV. Previously, I was a research intern at [King Abdullah University of Science and Technology (KAUST)](https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group) supervised by [Prof. Mohamed Elhoseiny](https://scholar.google.com/citations?user=iRBUTOAAAAAJ&hl=en) in which I published a NeurIPS paper.
 
-I have <strong> over 10 years</strong> of mixed industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong> and received my BSc. in Electronics and Communications Engineering from Alexandria University.
+I have <strong> over 10 years</strong> of multi-disciplinary research, entrepreneurship and industry experience in machine learning, software and hardware. I started 3 startups, worked for <strong>Intel</strong> as a Design and Automation Engineer, and worked for Sonics Inc (acquired by Meta) as a Solutions Architect. I studied <strong>Computer Science at San Jose State University</strong>, was top 1% and and received my BSc. in Electronics and Communications Engineering from Alexandria University.
+
 <h2 style="margin: 40px 0px 10px;"></h2>
 <!--[National University of Singapore](https://www.comp.nus.edu.sg/). My biography is [here](./biography/).
 -->
@@ -15,10 +16,9 @@ I have <strong> over 10 years</strong> of mixed industry experience in machine l
 -->
 
 # Research Interests
-- Generative-AI: Image and Video Generation, Story Visualization, Diffusion and 3D Generation
-- Image, Video & 3D Understanding and Question-Answering
-- Large Language Models (LLMs): Interpretability, Robustness, Generalizability and Theory
-- Robotics leveraging LLMs, VLMs, Diffusion and 3D
+- Robotics: Perception, Manipulation, Learning, 3D, 4D and RL
+- Image and Video 2D/3D Generation and Understanding
+- Theory and Mathematical Foundational Research
 - ML for healthcare
 
 {% include_relative _includes/news.md %}
