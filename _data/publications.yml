@@ -3,6 +3,7 @@ main:
     authors: <strong>Mohamed Elmoghany,</srong> Liangbing Zhao, Xiaoqian Shen, Subhojyoti Mukherjee, Yang Zhou, Gang Wu, Viet Dac Lai, Seunghyun Yoon, Ryan A. Rossi, Abdullah Rashwan, Puneet Mathur, Varun Manjunatha, Daksh Dangi, Nedim Lipka, Trung Bui, Krishna Kumar Singh, Ruiyi Zhang, Xiaolei Huang, Jaemin Cho, Yu Wang, Namyong Park, Zhengzhong Tu, Hongjie Chen, Hoda Eldardiry, Nesreen K. Ahmed, Thien Huu Nguyen, Dinesh Manocha, Mohamed Elhoseiny, Franck Dernoncourt
     conference_short: Submitted @ top-tier conference
     conference: pre-print
+    image: assets/teaser/infinitystory-figure.png
 
   - title: "MAGNET: A Multi-agent Framework for Finding Audio-Visual Needles by Reasoning over Multi-Video Haystacks"
     authors: Sanjoy Chowdhury, <strong>Mohamed Elmoghany</strong>, Yohan Abeysinghe, Junjie Fei, Sayan Nag, Salman Khan, Mohamed Elhoseiny, Dinesh Manocha
