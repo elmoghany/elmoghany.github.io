@@ -1,15 +1,15 @@
 # Basic Information 
 title: Mohamed Elmoghany
 #position: Research Intern @ Adobe Research
-affiliation: Research Scientist Staff at Stanford
+affiliation: Visiting Researcher at Stanford
 affiliation_link: https://stanford.edu/
 #affiliation_logo: ./assets/logo/logo.png
 email: m.osama.elmoghany@gmail.com
 
 # Search Engine Optimization (SEO)
-keywords: Mohamed Elmoghany, Elmoghany, robotics, reinforcement learning, perception, generative AI, curawella, cammedar, kaust, sjsu, llm, vlm, diffusion
+keywords: Mohamed Elmoghany, Elmoghany, robotics, reinforcement learning, perception, manipulation, llm, diffusion, stanford generative AI, kaust, sjsu, llm, vlm
 canonical: https://elmoghany.github.io
-description: Mohamed Elmoghany is a machine learning researcher with interests in generative AI, image and video generation, LLMs optmization, machine learning theoritical and architectural development.
+description: Mohamed Elmoghany is a machine learning researcher with interests in robotics, robot learning, perception, manipulation, 3dgs, 4dgs, novel view synthesis and robotics for healthcare. generative AI, image and video generation, LLMs optmization, machine learning theoritical and architectural development.
 
 # The option is used to enable the Johns Hopkins template.
 enable_hopkins_logo: true
@@ -28,7 +28,7 @@ github_link: https://github.com/elmoghany/
 avatar: assets/profile/profile.jpg
 
 # Footnotes
-footnote: (updated Nov'25) create your website using this template
+footnote: (updated Jun'26) create your website using this template
 footnote_link: https://github.com/yaoyao-liu/minimal-light
 
 # Analytics
