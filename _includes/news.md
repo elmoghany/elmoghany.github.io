@@ -4,12 +4,11 @@
 <li><strong>[Jun. 2026]</strong> Got into Cornell University CS PhD Program and awarded Excellence Fellowship</li>
 <li><strong>[Nov. 2025]</strong> Joined Stanford University as a visiting researcher</li>
 <li><strong>[Jul. 2025]</strong> Published a NeurIPS'25 paper with KAUST</li>
-div>
+<div>
   <li> <a href="javascript:toggle_vis('newsmore')">Show more</a> </li>
   <div id="newsmore" style="display:none">
     <li><strong>[Jul. 2025]</strong> Published ICCV'25 proceedings workshop with Adobe</li>
     <li><strong>[May 2025]</strong> Joined Adobe Research as a Machine Learning Research Scientist Intern <a href="https://research.adobe.com/"></a>!</li>
-    <li><strong>[Jul. 2025]</strong> Published a NeurIPS'25 paper with KAUST</li>
     <li><strong>[Dec. 2024]</strong> Got accepted in <a href="https://www.gemfellowship.org/">GEM Fellowship</a> funding my future PhD studies.</li>
     <li><strong>[Oct. 2024]</strong> Joined KAUST as a research intern <a href="https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group">KAUST Computer Vision, Core AI Research</a>!</li>
     </div>
