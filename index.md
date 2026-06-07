@@ -28,8 +28,8 @@ I have <strong> over 10 years</strong> of multi-disciplinary research, entrepren
 
 # Academic and Industry Experience
 - [2025 - 2026] Visiting Researcher @ SVL Lab ( Prof. Jiajun Wu ) <strong>@ Stanford University</strong>
-- [2025 - 2025] Research Scientist Intern <strong>@ Adobe Research</strong>
-- [2024 - 2025] Research Scientist Intern <strong>@ KAUST</strong>
+- [2025 - 2025] Research Scientist Intern (Dr. Franck Dernoncourt) <strong>@ Adobe Research</strong>
+- [2024 - 2025] Research Scientist Intern (Prof. Mohamed Elhoseiny) <strong>@ KAUST</strong>
 - [2022 - 2023] Machine Learning Engineer & Co-founder <strong>@ Cammedar, AI Speech Recognition</strong>
 - [2019 - 2022] CEO & Co-founder <strong>@ Curawella, Personalized Healthcare Systems</strong>
 - [2017 - 2019] Design and Automation Engineer <strong>@ Intel</strong>
