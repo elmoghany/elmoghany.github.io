@@ -11,8 +11,8 @@
     <li><strong>[Jul. 2025]</strong> Published a NeurIPS'25 paper with KAUST</li>
     <li><strong>[Dec. 2024]</strong> Got accepted in <a href="https://www.gemfellowship.org/">GEM Fellowship</a> funding my future PhD studies.</li>
     <li><strong>[Oct. 2024]</strong> Joined KAUST as a research intern <a href="https://vision-cair.kaust.edu.sa/computer-vision-core-ai-research-group">KAUST Computer Vision, Core AI Research</a>!</li>
+    </div>
 </div>
-
 <!--
 <div>
 <li> <a href="javascript:toggle_vis('newsmore')">Show more</a> </li>
