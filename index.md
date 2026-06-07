@@ -15,6 +15,10 @@ I have <strong> over 10 years</strong> of multi-disciplinary research, entrepren
 <!--<strong style="color:#e74d3c; font-weight:600"><strong style="color:#e74d3c; font-weight:600">test [here](./openings/).</strong>
 -->
 
+<div style="border: 2px solid #e74d3c; border-radius: 14px; padding: 14px 20px; margin: 10px 0px 30px; text-align: center;">
+  <strong style="color:#e74d3c; font-weight:600">Feel free to reach out if you're interested in research collaboration!</strong>
+</div>
+
 # Research Interests
 - Robot Learning, Perception and Manipulation
 - Reinforcement Learning
