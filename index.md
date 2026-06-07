@@ -23,7 +23,8 @@ I have <strong> over 10 years</strong> of multi-disciplinary research, entrepren
 - Robotics for Healthcare
 
 
-# Main Conference Reviewer:
+
+# Main Conference Reviewer
 - NeurIPS (2026 - present)
 - ECCV (2026 - present)
 - CVPR (2025 - present)
