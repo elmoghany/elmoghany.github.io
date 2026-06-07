@@ -24,9 +24,9 @@ I have <strong> over 10 years</strong> of multi-disciplinary research, entrepren
 
 
 # Main Conference Reviewer:
-- CVPR
-- NeurIPS
-- ECCV
+- NeurIPS (2026 - present)
+- ECCV (2026 - present)
+- CVPR (2025 - present)
 
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
