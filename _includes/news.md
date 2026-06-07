@@ -3,10 +3,11 @@
 <ul>
 <li><strong>[Jun. 2026]</strong> Got into Cornell University CS PhD Program and awarded Excellence Fellowship</li>
 <li><strong>[Nov. 2025]</strong> Joined Stanford University as a visiting researcher</li>
-<li><strong>[Jul. 2025]</strong> Published ICCV'25 proceedings workshop with Adobe</li>
-<div>
+<li><strong>[Jul. 2025]</strong> Published a NeurIPS'25 paper with KAUST</li>
+div>
   <li> <a href="javascript:toggle_vis('newsmore')">Show more</a> </li>
   <div id="newsmore" style="display:none">
+    <li><strong>[Jul. 2025]</strong> Published ICCV'25 proceedings workshop with Adobe</li>
     <li><strong>[May 2025]</strong> Joined Adobe Research as a Machine Learning Research Scientist Intern <a href="https://research.adobe.com/"></a>!</li>
     <li><strong>[Jul. 2025]</strong> Published a NeurIPS'25 paper with KAUST</li>
     <li><strong>[Dec. 2024]</strong> Got accepted in <a href="https://www.gemfellowship.org/">GEM Fellowship</a> funding my future PhD studies.</li>
