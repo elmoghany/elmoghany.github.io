@@ -22,6 +22,12 @@ I have <strong> over 10 years</strong> of multi-disciplinary research, entrepren
 - Theory and Mathematical Foundational Research
 - Robotics for Healthcare
 
+
+# Main Conference Reviewer:
+- CVPR
+- NeurIPS
+- ECCV
+
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
 {% include_relative _includes/preprints.md %}
