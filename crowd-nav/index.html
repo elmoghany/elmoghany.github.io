@@ -255,14 +255,30 @@
 </section>
 
 <!-- SCENARIO SECTIONS -->
+<section class="step" id="scintro">
+  <div class="body">
+    <div class="callout take"><div class="h">Two robots per model: <span class="pill rb-zz">zigzag</span> vs <span class="pill rb-rl">RL</span></div>
+    <p>Each scenario below now shows <strong>two robots for every pedestrian model</strong>, side by side on the same crowd:
+    the <strong>left</strong> card is the open-loop <strong>zigzag</strong> (a dumb moving obstacle that bounces wall-to-wall),
+    the <strong>right</strong> card is our <strong>learned RL controller</strong> — a holonomic policy (it strafes left/right,
+    yields, and detours) trained against that exact math model and guarded by a Control-Barrier-Function safety shield. Same
+    crowd, same model, different robot. The RL robot <em>actively navigates</em> and keeps <strong>near-zero contacts</strong>
+    (0 on light→dense, 1 in the rush/packed stress cases) where the zigzag plows through at 5–21.</p></div>
+  </div>
+</section>
+
 <section class="step" id="sc1">
   <div class="step-head"><div class="badge">1</div><h2>Light oncoming traffic · 44 people</h2></div>
   <p class="q">A sparse oncoming stream — the clearest read of each model's give-way as people meet the upstream robot.</p>
   <div class="body"><div class="cbgrid">
-    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_stream_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · reciprocal + clearance margin</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_stream_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · robot = another pedestrian</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_stream_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · social-robot force + legibility</div></div>
-    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_stream_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">5 collisions</b> · SRFM + motion-dependent gain</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_stream_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · open-loop zigzag · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_stream_orca_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_stream_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · open-loop zigzag · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_stream_sfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_stream_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · open-loop zigzag · social-robot force + legibility</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_stream_srfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_stream_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">5 collisions</b> · open-loop zigzag · SRFM + motion-dependent gain</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_stream_ours_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · SRFM + motion-dependent gain</div></div>
   </div></div>
 </section>
 
@@ -270,10 +286,14 @@
   <div class="step-head"><div class="badge">2</div><h2>Steady oncoming flow · 64 people</h2></div>
   <p class="q">A continuous oncoming flow filling the corridor. Does the model keep it smooth as the robot bores upstream?</p>
   <div class="body"><div class="cbgrid">
-    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_steady_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">21 collisions</b> · reciprocal + clearance margin</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_steady_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">10 collisions</b> · robot = another pedestrian</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_steady_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">14 collisions</b> · social-robot force + legibility</div></div>
-    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_steady_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · SRFM + motion-dependent gain</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_steady_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">7 collisions</b> · open-loop zigzag · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_steady_orca_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_steady_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">8 collisions</b> · open-loop zigzag · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_steady_sfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_steady_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · open-loop zigzag · social-robot force + legibility</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_steady_srfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_steady_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">3 collisions</b> · open-loop zigzag · SRFM + motion-dependent gain</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_steady_ours_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · SRFM + motion-dependent gain</div></div>
   </div></div>
 </section>
 
@@ -281,10 +301,14 @@
   <div class="step-head"><div class="badge">3</div><h2>Dense oncoming crowd · 84 people</h2></div>
   <p class="q">A dense crowd packing the corridor end-to-end, all coming the other way. Little room to part for the robot.</p>
   <div class="body"><div class="cbgrid">
-    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_dense_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">15 collisions</b> · reciprocal + clearance margin</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_dense_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">22 collisions</b> · robot = another pedestrian</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_dense_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">26 collisions</b> · social-robot force + legibility</div></div>
-    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_dense_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">8 collisions</b> · SRFM + motion-dependent gain</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_dense_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">5 collisions</b> · open-loop zigzag · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_dense_orca_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_dense_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">13 collisions</b> · open-loop zigzag · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_dense_sfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_dense_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">16 collisions</b> · open-loop zigzag · social-robot force + legibility</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_dense_srfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_dense_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">6 collisions</b> · open-loop zigzag · SRFM + motion-dependent gain</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_dense_ours_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · SRFM + motion-dependent gain</div></div>
   </div></div>
 </section>
 
@@ -292,10 +316,14 @@
   <div class="step-head"><div class="badge">4</div><h2>Mixed-speed oncoming rush · 76 people</h2></div>
   <p class="q">A wide spread of walking speeds — quicker walkers weave past slower ones and the upstream zigzag robot.</p>
   <div class="body"><div class="cbgrid">
-    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_rush_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">23 collisions</b> · reciprocal + clearance margin</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_rush_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">19 collisions</b> · robot = another pedestrian</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_rush_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">18 collisions</b> · social-robot force + legibility</div></div>
-    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_rush_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · SRFM + motion-dependent gain</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_rush_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · open-loop zigzag · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_rush_orca_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">1 collision</b> · learned RL controller · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_rush_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">10 collisions</b> · open-loop zigzag · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_rush_sfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">1 collision</b> · learned RL controller · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_rush_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · open-loop zigzag · social-robot force + legibility</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_rush_srfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">1 collision</b> · learned RL controller · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_rush_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">5 collisions</b> · open-loop zigzag · SRFM + motion-dependent gain</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_rush_ours_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">1 collision</b> · learned RL controller · SRFM + motion-dependent gain</div></div>
   </div></div>
 </section>
 
@@ -303,10 +331,14 @@
   <div class="step-head"><div class="badge">5</div><h2>Packed, wall-to-wall · 116 people</h2></div>
   <p class="q">The stress test: a packed oncoming crowd, corridor full start-to-finish, as the robot bores upstream.</p>
   <div class="body"><div class="cbgrid">
-    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_packed_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">19 collisions</b> · reciprocal + clearance margin</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_packed_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">25 collisions</b> · robot = another pedestrian</div></div>
-    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_packed_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">24 collisions</b> · social-robot force + legibility</div></div>
-    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_packed_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">14 collisions</b> · SRFM + motion-dependent gain</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_packed_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">8 collisions</b> · open-loop zigzag · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_packed_orca_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_packed_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">21 collisions</b> · open-loop zigzag · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_packed_sfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--good)">0 collisions</b> · learned RL controller · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_packed_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">21 collisions</b> · open-loop zigzag · social-robot force + legibility</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_packed_srfm_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">1 collision</b> · learned RL controller · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-zz">zigzag</span></div><video src="assets/cb/cb_packed_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">12 collisions</b> · open-loop zigzag · SRFM + motion-dependent gain</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span><span class="pill rb-rl">RL</span></div><video src="assets/cb/cb_packed_ours_rl.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">1 collision</b> · learned RL controller · SRFM + motion-dependent gain</div></div>
   </div></div>
 </section>
 

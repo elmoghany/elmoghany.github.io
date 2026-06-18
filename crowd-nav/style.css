@@ -164,6 +164,10 @@ footer code{color:var(--mut)}
 /* crowd-behaviour model grid (7 models side by side) */
 .cbgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
 @media(max-width:620px){ .cbgrid{grid-template-columns:1fr} }
+/* robot-type badges (zigzag vs RL) on the per-model rows */
+.vcard .vh .nm{flex:1 1 auto}
+.vcard .vh .pill.rb-zz{background:#23232e;color:var(--mut2);border:1px solid var(--line)}
+.vcard .vh .pill.rb-rl{background:#c956ff1f;color:#eac9ff;border:1px solid #c956ff66}
 .cbgrid .vcard{display:flex;flex-direction:column}
 .cbgrid .vcard video{aspect-ratio:16/9;object-fit:cover}
 .cbgrid .vt{margin-top:auto}
