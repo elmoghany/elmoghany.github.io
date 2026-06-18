@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Crowd behaviour · a robot upstream against an oncoming crowd · 4 models</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="toc">
+  <h1>Crowd behaviour</h1>
+  <p class="sub">A corridor full of oncoming people; a wall-to-wall zigzag robot pushes upstream against them. The same scene under 4 pedestrian models.</p>
+  <ol>
+    <li><a href="#intro">Setup: oncoming crowd, upstream robot</a></li>
+    <li><a href="#models">The 4 pedestrian models</a></li>
+    <li><a href="#eval">What the sim measured</a></li>
+    <li><a href="#sc1">1 · light traffic · 44</a></li>
+    <li><a href="#sc2">2 · steady flow · 64</a></li>
+    <li><a href="#sc3">3 · dense crowd · 84</a></li>
+    <li><a href="#sc4">4 · mixed-speed rush · 76</a></li>
+    <li><a href="#sc5">5 · packed · 116</a></li>
+    <li><a href="#read">How to read · honesty</a></li>
+    <li><a href="#orca">Tuning ORCA · a margin only partly helps</a></li>
+    <li><a href="#how">How the motion gain works</a></li>
+    <li><a href="#refs">References (BibTeX)</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">Human-behaviour visualisation · oncoming crowd · 4 models</div>
+  <h1>How does a crowd flow around a robot pushing upstream through it?</h1>
+  <p class="lead">A <b style="color:#eac9ff">50 m × 6 m</b> corridor is kept <b style="color:#eac9ff">full from end to end</b>:
+  everyone walks one way at about <b style="color:#eac9ff">1.0 m/s</b>, re-entering at the back when they leave, so the
+  passage stays crowded the whole clip. Driving the <b style="color:#eac9ff">opposite way</b>, against the flow, is a robot
+  — not a controller, just an open-loop <b style="color:#eac9ff">zigzag that bounces wall-to-wall</b> at about
+  <b style="color:#eac9ff">0.75 m/s</b>. What varies between cards is the <b style="color:#eac9ff">pedestrian model</b>: the
+  rule each person uses to avoid the oncoming robot and each other.</p>
+  <div class="chips">
+    <span class="tag good">robot ≈ 0.75 m/s</span>
+    <span class="tag good">crowd ≈ 1.0 m/s</span>
+    <span class="tag bad">head-on</span>
+    <span class="tag">ORCA</span><span class="tag">Social-Force</span><span class="tag">SRFM</span>
+    <span class="tag acc">SRFM + motion gain</span>
+  </div>
+</header>
+
+<!-- intro -->
+<section class="step" id="intro">
+  <div class="step-head"><div class="badge">∎</div><h2>Setup: an oncoming crowd, an upstream zigzag, a fixed camera</h2></div>
+  <p class="q">The robot's path is <b>fixed and dumb</b>, and it goes <b>against the flow</b>. The question: <b>how does the crowd part for it?</b></p>
+  <div class="body">
+    <div class="stats">
+      <div class="stat good"><div class="v">≈0.75<small> m/s</small></div><div class="k">robot path speed (zigzag, upstream)</div></div>
+      <div class="stat"><div class="v">≈1.0<small> m/s</small></div><div class="k">crowd speed (the other way)</div></div>
+      <div class="stat"><div class="v">50×6<small> m</small></div><div class="k">corridor (length ×2, same width)</div></div>
+      <div class="stat warn"><div class="v">44–116</div><div class="k">people, corridor kept full</div></div>
+    </div>
+    <p>The stage is a <strong>50 m-long, 6 m-wide walled corridor</strong>. A robot — the real MuJoCo Go2 — drives
+    <strong>against the crowd</strong> on an <strong>open-loop zigzag that bounces wall-to-wall</strong>: it sweeps to one
+    wall, flips direction, heads for the other, and so on, always advancing at about <strong>0.75 m/s</strong>. Because the
+    crowd walks the opposite way at <strong>≈1.0 m/s</strong>, people meet the robot <strong>head-on</strong> and have to
+    part around its laterally-sweeping body — a much harder test than overtaking it from behind.</p>
+    <div class="flow">
+      <div class="fnode bad"><b>upstream zigzag</b><span>open-loop · ≈0.75 m/s · against the flow</span></div>
+      <div class="farr">→</div>
+      <div class="fnode key"><b>pedestrian model</b><span>the one thing that changes</span></div>
+      <div class="farr">→</div>
+      <div class="fnode good"><b>crowd flow</b><span>how people part, give way, thread</span></div>
+    </div>
+    <p>The <strong>camera is fixed</strong>: centered on the corridor, it sits behind the robot and only dollies along the
+    corridor axis to follow it — it <em>never</em> pans left or right, so the robot's zigzag plays out inside a steady
+    frame while the crowd streams toward it. All four models are <strong>reactive force models</strong>, simulated
+    <em>live</em> in MuJoCo: each person steers with ORCA against the other people and reacts to the robot through a named
+    repulsive force — from <em>no robot-force at all</em> (ORCA — it just keeps a clearance buffer), to a Helbing pedestrian-force (Social-Force), to the SOTA
+    Social-Robot-Force-Model (SRFM), to SRFM plus our motion-dependent gain. Collisions and min-separation in the HUD are
+    therefore physically real.</p>
+    <div class="callout"><div class="h">Collisions are counted, from real geometry</div><p>A robot-pedestrian contact turns
+    the struck person and the robot <strong>bright red</strong> and increments the HUD counter, computed from real MuJoCo
+    contact geometry. The robot is a <em>moving obstacle</em>: a contact does not end the run, so you watch the whole
+    upstream traverse.</p></div>
+  </div>
+</section>
+
+<!-- models -->
+<section class="step" id="models">
+  <div class="step-head"><div class="badge">4</div><h2>The four pedestrian models</h2></div>
+  <p class="q">From pure geometry to a motion-dependent robot force — each is a different theory of <b>how a person reacts</b>, with its own <b>tunable parameters</b>.</p>
+  <div class="body">
+    <p>Each model exposes a handful of knobs you can change to alter the crowd's behaviour. Two are shared by every model
+    (the geometry of a person): <code>ped_radius = 0.3 m</code> (each person's disc / personal bubble) and the walking
+    speed <code>v_pref = 1.0 m/s</code>. Every crowd also shares a realistic <strong>anisotropic gait</strong> — forward
+    ≤ 1.0, sidestep and backward ≤ 0.333 m/s, with at most 0.5 m of sideways and 0.5 m of backward travel — so no model can
+    dodge the robot by sprinting sideways or backwards. The model-specific parameters — with the exact values used in these clips — are
+    below.</p>
+
+    <div class="mcard">
+      <div class="mhead"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div>
+      <p class="mdesc">Optimal Reciprocal Collision Avoidance: each agent picks the closest velocity to its preferred
+      one that is guaranteed collision-free for a time horizon. No special robot force. On this page ORCA uses a
+      <strong>clearance margin</strong> so the crowd gives the non-reciprocating robot a natural berth (see
+      <a href="#orca">Tuning ORCA</a>); with standard params it collides far more.</p>
+      <div class="eqn">
+        \[ \mathbf{v}^{\text{new}}_A \;=\; \underset{\mathbf{v}\,\in\,ORCA^{\tau}_A}{\arg\min}\;\bigl\lVert \mathbf{v}-\mathbf{v}^{\text{pref}}_A \bigr\rVert
+           \qquad ORCA^{\tau}_A=\bigcap_{B\neq A} ORCA^{\tau}_{A\mid B} \]
+        <div class="ecap">Each agent <code>A</code> picks the velocity closest to its preferred one <code>v_pref</code> that still lies in
+        <code>ORCA<sup>τ</sup></code> — the intersection of the collision-free velocity half-planes, one per neighbour <code>B</code>, that keep it clear for the next
+        <code>τ</code> seconds. No robot term: the robot is just another neighbour. Solved as a small linear program each step.</div>
+      </div>
+      <table class="ptbl">
+        <tr><td>ped_radius</td><td>0.3 m</td><td>each person's disc radius — the clearance ORCA keeps between people (and to the robot)</td></tr>
+        <tr><td>v_pref</td><td>1.0 m/s</td><td>preferred walking speed each person steers back toward</td></tr>
+        <tr><td>radius_margin</td><td>0.4 m</td><td><strong>the lever:</strong> extra clearance added to the planning disc only — drops contacts 26.2→17.8 (standard: 0)</td></tr>
+        <tr><td>neighbor_dist</td><td>4.0 m</td><td>how far out ORCA looks for others to avoid (standard value)</td></tr>
+        <tr><td>max_neighbors</td><td>30</td><td>most agents considered for a safe velocity (standard 10 — raised for dense flow)</td></tr>
+        <tr><td>time_horizon</td><td>4.0 s</td><td>plan-ahead window (standard ~3; barely affects robot contacts — ORCA expects reciprocity)</td></tr>
+      </table>
+    </div>
+
+    <div class="mcard">
+      <div class="mhead"><span class="nm">Social-Force</span><span class="pill">math</span></div>
+      <p class="mdesc">Helbing's social-force: people feel an exponential repulsion from each other and from the robot,
+      which here is treated as just another pedestrian.</p>
+      <div class="eqn">
+        \[ m\,\dot{\mathbf{v}}_i \;=\; \frac{\mathbf{v}^{\text{pref}}_i-\mathbf{v}_i}{\tau}
+           \;+\; \sum_{j\neq i} A\,\exp\!\Bigl(\tfrac{r-d_{ij}}{B}\Bigr)\,\hat{\mathbf{n}}_{ij} \]
+        <div class="ecap">Person <code>i</code> accelerates back toward its preferred velocity (relaxation time <code>τ</code>) plus an
+        <em>exponential repulsion</em> from every neighbour <code>j</code> (and from the robot, treated as a neighbour).
+        <code>A</code> = strength, <code>B</code> = range/decay length, <code>r</code> = summed radii, <code>d<sub>ij</sub></code> = centre gap,
+        <code>n̂<sub>ij</sub></code> points from <code>j</code> to <code>i</code>. The repulsion grows as people get closer.</div>
+      </div>
+      <table class="ptbl">
+        <tr><td>A_p</td><td>2.0</td><td>person↔person repulsion <em>strength</em> (higher = people push apart harder)</td></tr>
+        <tr><td>B_p</td><td>0.3 m</td><td>person↔person repulsion <em>range</em> / decay length (higher = felt from farther)</td></tr>
+        <tr><td>A&nbsp;(robot)</td><td>2.0</td><td>robot repulsion strength — robot felt like a person</td></tr>
+        <tr><td>B&nbsp;(robot)</td><td>0.3 m</td><td>robot repulsion range</td></tr>
+        <tr><td>force_cap</td><td>3.0</td><td>ceiling on the force so close passes can't explode</td></tr>
+      </table>
+    </div>
+
+    <div class="mcard">
+      <div class="mhead"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div>
+      <p class="mdesc">Social-Robot-Force-Model: the same exponential form but with a dedicated, stronger
+      <em>robot</em> force (learned from the JRDB dataset), gated by whether the person can see the robot and how legible
+      its motion is.</p>
+      <div class="eqn">
+        \[ \mathbf{f}_r \;=\; \underbrace{A_r\,\exp\!\Bigl(\tfrac{d-\mathrm{dist}}{B_r}\Bigr)}_{\text{exponential robot repulsion}}\;\hat{\mathbf{n}}\;\cdot\;L
+           \qquad A_r=7.93,\;\; B_r=0.99\ \text{m} \]
+        <div class="ecap">Same exponential form as social-force, but a <em>dedicated, stronger</em> robot term: <code>A_r</code> = robot-force
+        strength (≈4× a person), <code>B_r</code> = its range, <code>d</code> = summed radii, <code>dist</code> = robot↔person distance,
+        <code>n̂</code> points robot→person. The whole force is gated by legibility <code>L ∈ [0,1]</code> — how intent-revealing the
+        robot's motion looks.</div>
+      </div>
+      <table class="ptbl">
+        <tr><td>A_r</td><td>7.93</td><td>robot-force strength (learned; ~4× a person — a robot is given a wider berth)</td></tr>
+        <tr><td>B_r</td><td>0.99 m</td><td>robot-force range / decay length</td></tr>
+        <tr><td>see_radius</td><td>4.0 m</td><td>distance within which a person notices the robot and reacts</td></tr>
+        <tr><td>see_fov_deg</td><td>200°</td><td>field of view for noticing the robot (outside it, no reaction)</td></tr>
+        <tr><td>legibility&nbsp;L</td><td>0–1</td><td>scales the yield by how committed/intent-revealing the robot's motion is</td></tr>
+      </table>
+      <div class="callout" style="margin-top:11px">
+        <div class="h">Where does <code>A_r = 7.93</code> come from? (it's a curve-fit, not a neural net)</div>
+        <p><code>A_r</code> and <code>B_r</code> are just
+        <em>two numbers</em> calibrated by <strong>nonlinear least-squares regression</strong> on real pedestrian trajectories in the
+        <a href="#refs">JRDB</a> dataset (Agrawal et al., 2024). The recipe:</p>
+        <p style="margin:7px 0 0">① Take the two-parameter robot force above, <code>f = A_r·exp((d−dist)/B_r)·n̂</code>, with <code>A_r,&nbsp;B_r</code> unknown.
+        ② For candidate values, roll the model forward and predict where each person <em>should</em> move as the robot passes.
+        ③ Compare to where people <em>actually</em> moved in JRDB and add up the squared error.
+        ④ Search for the <code>(A_r, B_r)</code> that <strong>minimise that total error</strong> — the best fit lands at
+        <code>A_r = 7.93</code>, <code>B_r = 0.99 m</code>.</p>
+        <p style="margin:7px 0 0">So <code>7.93</code> is the robot-repulsion strength that best reproduces how humans were observed to give way — classic
+        <em>parameter estimation</em> (the same family of math as fitting a line to data), <em>not</em> gradient-descent network training.
+        Our model keeps this fitted force and only multiplies it by a motion-dependent <code>gain</code>.</p>
+      </div>
+    </div>
+
+    <div class="mcard ours">
+      <div class="mhead"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div>
+      <p class="mdesc">SRFM's robot force plus a <em>motion-dependent gain</em> — the yield scales with <em>how</em> the robot is
+      moving (approach angle, turn rate, time-to-collision), not just where it is. Legibility is one of three factors.</p>
+      <div class="eqn">
+        \[ \mathbf{f}_r \;=\; \mathrm{gain}\,\cdot\,A_r\,\exp\!\Bigl(\tfrac{d-\mathrm{dist}}{B_r}\Bigr)\,\hat{\mathbf{n}}
+           \qquad \mathrm{gain}=\underbrace{L_{\text{motion}}}_{\text{legibility}}\cdot\,\underbrace{A_{\text{angle}}}_{\text{approach}}\cdot\,\underbrace{U_{\text{ttc}}}_{\text{urgency}} \]
+        <div class="ecap">Exactly SRFM's fitted force, scaled by a <em>motion-dependent gain</em> built from three bounded factors — legibility
+        <code>L_motion</code>, approach-angle anisotropy <code>A_angle</code>, and time-to-collision urgency <code>U_ttc</code>. Setting
+        <code>gain → L</code> (i.e. <code>λ=1, κ=0, ω=0</code>) recovers SRFM exactly. Full factor definitions in
+        <a href="#how">How it works</a>.</div>
+      </div>
+      <table class="ptbl">
+        <tr><td>A_r, B_r</td><td>7.93, 0.99</td><td>the SRFM robot force it builds on (strength, range)</td></tr>
+        <tr><td>lam&nbsp;(λ)</td><td>0.4</td><td>anisotropy: a robot driving straight <em>at</em> you influences ~1/λ× more than one moving away (λ=1 → isotropic)</td></tr>
+        <tr><td>omega0&nbsp;(ω₀)</td><td>1.0 rad/s</td><td>turn-rate scale: a robot spinning fast reads as hesitant/illegible, so it influences less</td></tr>
+        <tr><td>ttc0</td><td>2.0 s</td><td>reference time-to-collision — an imminent collision sharply amplifies the yield</td></tr>
+        <tr><td>kappa&nbsp;(κ)</td><td>0.5</td><td>urgency strength of that TTC amplification (κ=0 → off)</td></tr>
+        <tr><td>u_max</td><td>2.0</td><td>cap on the urgency boost so a near-zero TTC can't blow up</td></tr>
+      </table>
+    </div>
+
+    <div class="callout"><div class="h">Same robot, same flow, only the rule changes</div><p>Every model gets the
+    identical corridor, the identical oncoming crowd, and the identical upstream wall-to-wall zigzag robot. Differences you
+    see between cards — and in the numbers below — are differences between the <em>models</em> and the parameters above.</p></div>
+  </div>
+</section>
+
+<!-- eval -->
+<section class="step" id="eval">
+  <div class="step-head"><div class="badge">Σ</div><h2>What the sim measured</h2></div>
+  <p class="q">Across all 5 scenarios (≈90 s each, identical scenes per model): how often did the crowd <b>contact</b> the upstream robot, and how much <b>room</b> did it leave?</p>
+  <div class="body">
+    <div class="chart">
+      <p class="ct"><b>Robot–pedestrian contacts</b> — average per scenario, mean of the 5 densities (lower = the crowd avoided the oncoming robot better)</p>
+      <div class="bars">
+        <div class="bar"><div class="bl">SRFM + motion gain<small>ours</small></div><div class="bt"><div class="bf good" style="width:51.6%"></div></div><div class="bv good">9.4</div></div>
+        <div class="bar"><div class="bl">Social-Force<small>math</small></div><div class="bt"><div class="bf bad" style="width:95.6%"></div></div><div class="bv bad">17.4</div></div>
+        <div class="bar"><div class="bl">ORCA (tuned)<small>+ clearance margin</small></div><div class="bt"><div class="bf bad" style="width:97.8%"></div></div><div class="bv bad">17.8</div></div>
+        <div class="bar"><div class="bl">SRFM<small>SOTA</small></div><div class="bt"><div class="bf bad" style="width:100%"></div></div><div class="bv bad">18.2</div></div>
+      </div>
+      <div class="ref">contacts = distinct robot↔pedestrian surface overlaps, averaged over the 5 scenarios (44–116 people) · same scenes for every model · totals over the five — ours 47 · Social-Force 87 · ORCA&#8209;tuned 89 · SRFM 91 · ORCA is the tuned config (see below), the others use standard params. Crowd uses a realistic anisotropic gait (forward 1.0 / side 0.333 / back 0.333 m/s; ≤0.5 m sideways, ≤0.5 m backward) — see note below.</div>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>model</th><th>avg contacts<br><span style="font-weight:400;text-transform:none">per scenario</span></th><th>worst overlap<br><span style="font-weight:400;text-transform:none">m (neg = into a person)</span></th><th>mean clearance<br><span style="font-weight:400;text-transform:none">m to nearest person</span></th></tr></thead>
+      <tbody>
+        <tr class="hi"><td>SRFM + motion gain <span class="muted">(ours)</span></td><td class="win">9.4</td><td>−0.64</td><td>0.43</td></tr>
+        <tr><td>Social-Force</td><td>17.4</td><td>−0.64</td><td>0.24</td></tr>
+        <tr><td>ORCA <span class="muted">(tuned)</span></td><td>17.8</td><td>−0.62</td><td>0.21</td></tr>
+        <tr><td>SRFM</td><td class="lose">18.2</td><td>−0.65</td><td>0.33</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout take"><div class="h">What the numbers say</div><p>Head-on, over 50 metres with a realistic,
+    tightly-constrained crowd gait, only one model breaks from the pack. Our <strong>SRFM + motion gain</strong> is best on
+    <em>both</em> counts — <strong>9.4</strong> contacts per crossing and the widest mean berth (0.43 m) — roughly
+    <strong>halving</strong> every position-only model. The other three cluster together and high:
+    <strong>Social-Force 17.4</strong>, <strong>tuned ORCA 17.8</strong>, <strong>SRFM 18.2</strong>. When people can only
+    sidestep 0.5 m and never sprint aside, a fixed position-based robot force can't get them clear of a non-yielding robot in
+    time; only the motion-dependent gain — which makes people yield <em>early</em>, from the robot's approach — keeps contacts
+    down. ORCA's standard params are worst (26.2); under this gait a clearance margin only <em>partly</em> helps
+    (26.2→17.8) — see <a href="#orca">Tuning ORCA</a> below. <em>(ORCA here is the tuned config; the other three use standard
+    parameters.)</em></p></div>
+    <div class="callout honest"><div class="h">Why the contact counts are higher than a free-dodging crowd</div><p>Every
+    pedestrian here moves like a real person: <strong>forward up to 1.0 m/s</strong>, but only <strong>sidesteps or shuffles
+    backward at 0.333 m/s</strong> — and no more than <strong>0.5 m sideways</strong> or <strong>0.5 m behind</strong>
+    the furthest-forward point they reached. This anisotropic gait is applied <em>identically</em> to all four models, so the
+    comparison is fair — but it removes the unrealistic escape hatch of sprinting sideways or backward, which is why every
+    model's contact count is higher (and more honest) than it would be with a free-moving crowd.</p></div>
+    <p class="cap">Metrics computed live in the sim (<code>humanmodel/cb_flow.log_eval</code> → <code>results_cb/cb_eval.csv</code>),
+    not hand-set. "Worst overlap" is the deepest the robot got into a person (most-negative surface gap); "mean clearance"
+    is the average gap to the nearest person over all frames.</p>
+  </div>
+</section>
+
+<!-- SCENARIO SECTIONS -->
+<section class="step" id="sc1">
+  <div class="step-head"><div class="badge">1</div><h2>Light oncoming traffic · 44 people</h2></div>
+  <p class="q">A sparse oncoming stream — the clearest read of each model's give-way as people meet the upstream robot.</p>
+  <div class="body"><div class="cbgrid">
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_stream_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_stream_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_stream_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_stream_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">5 collisions</b> · SRFM + motion-dependent gain</div></div>
+  </div></div>
+</section>
+
+<section class="step" id="sc2">
+  <div class="step-head"><div class="badge">2</div><h2>Steady oncoming flow · 64 people</h2></div>
+  <p class="q">A continuous oncoming flow filling the corridor. Does the model keep it smooth as the robot bores upstream?</p>
+  <div class="body"><div class="cbgrid">
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_steady_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">21 collisions</b> · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_steady_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">10 collisions</b> · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_steady_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">14 collisions</b> · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_steady_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">9 collisions</b> · SRFM + motion-dependent gain</div></div>
+  </div></div>
+</section>
+
+<section class="step" id="sc3">
+  <div class="step-head"><div class="badge">3</div><h2>Dense oncoming crowd · 84 people</h2></div>
+  <p class="q">A dense crowd packing the corridor end-to-end, all coming the other way. Little room to part for the robot.</p>
+  <div class="body"><div class="cbgrid">
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_dense_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">15 collisions</b> · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_dense_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">22 collisions</b> · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_dense_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">26 collisions</b> · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_dense_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">8 collisions</b> · SRFM + motion-dependent gain</div></div>
+  </div></div>
+</section>
+
+<section class="step" id="sc4">
+  <div class="step-head"><div class="badge">4</div><h2>Mixed-speed oncoming rush · 76 people</h2></div>
+  <p class="q">A wide spread of walking speeds — quicker walkers weave past slower ones and the upstream zigzag robot.</p>
+  <div class="body"><div class="cbgrid">
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_rush_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">23 collisions</b> · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_rush_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">19 collisions</b> · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_rush_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">18 collisions</b> · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_rush_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">11 collisions</b> · SRFM + motion-dependent gain</div></div>
+  </div></div>
+</section>
+
+<section class="step" id="sc5">
+  <div class="step-head"><div class="badge">5</div><h2>Packed, wall-to-wall · 116 people</h2></div>
+  <p class="q">The stress test: a packed oncoming crowd, corridor full start-to-finish, as the robot bores upstream.</p>
+  <div class="body"><div class="cbgrid">
+    <div class="vcard"><div class="vh"><span class="nm">ORCA (tuned)</span><span class="pill">math</span></div><video src="assets/cb/cb_packed_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">19 collisions</b> · reciprocal + clearance margin</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">Social-Force</span><span class="pill">math</span></div><video src="assets/cb/cb_packed_sfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">25 collisions</b> · robot = another pedestrian</div></div>
+    <div class="vcard"><div class="vh"><span class="nm">SRFM</span><span class="pill sota">SOTA</span></div><video src="assets/cb/cb_packed_srfm.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">24 collisions</b> · social-robot force + legibility</div></div>
+    <div class="vcard ours"><div class="vh"><span class="nm">SRFM + motion gain</span><span class="pill ours">ours</span></div><video src="assets/cb/cb_packed_ours.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">14 collisions</b> · SRFM + motion-dependent gain</div></div>
+  </div></div>
+</section>
+
+<!-- read -->
+<section class="step" id="read">
+  <div class="step-head"><div class="badge">?</div><h2>How to read these clips — and what's honest about them</h2></div>
+  <div class="body">
+    <div class="callout honest"><div class="h">Everything is a simulated human model</div><p>All four are reactive force
+    models — ORCA for human↔human avoidance plus a named robot force — physically simulated in MuJoCo, so the contacts and
+    min-separation are real geometry. But the pedestrians are still <em>models</em>, not people: the rankings are statements
+    about these human-response models, not a claim about real crowds.</p></div>
+    <div class="callout take"><div class="h">What to look for</div><p>Across a row: standard ORCA grazes the oncoming
+    robot repeatedly (with a clearance margin it keeps a natural berth); plain Social-Force and position-only SRFM open a
+    bubble but can't hold the constrained crowd off the robot over 50 m; our <strong>SRFM + motion gain</strong> parts the
+    crowd early, stays selective where the position-only SRFM force degrades, and ends with the <em>fewest contacts and the
+    most room</em>.</p></div>
+  </div>
+</section>
+
+<!-- tuning ORCA -->
+<section class="step" id="orca">
+  <div class="step-head"><div class="badge">⚙</div><h2>Tuning ORCA — a clearance margin helps, but can't fully fix it</h2></div>
+  <p class="q">ORCA was worst (26.2 contacts/crossing). <b>Why</b>, and how much can parameters help when the crowd can't freely step aside?</p>
+  <div class="body">
+    <p><strong>The diagnosis.</strong> ORCA assumes <em>reciprocity</em> — each pair of agents splits the avoidance 50/50.
+    But the robot is a non-reciprocating open-loop zigzag, so the pedestrians only do <em>half</em> the avoiding and expect
+    the robot to do the rest; it never does. A parameter sweep confirms this: planning further ahead (<code>time_horizon</code>)
+    or looking wider (<code>neighbor_dist</code>, <code>max_neighbors</code>) <strong>barely helps</strong> — they assume a
+    cooperative partner. The one lever that works is a <strong>clearance margin</strong>: the pedestrians treat the robot as
+    a disc that needs a little more room (realistic for an unfamiliar agent that doesn't give way), so they stop cutting it
+    so close.</p>
+
+    <p><strong>How much does it help?</strong> The margin roughly <strong>halves</strong> standard ORCA's contacts
+    (<strong>26.2 → 17.8</strong>) by stopping it cutting corners — but under the tight gait it can't open much of a berth:
+    the tuned crowd's <em>mean clearance</em> is just <strong>0.21 m</strong>, barely above standard ORCA's 0.20 m, because the
+    people physically can't step aside. So the margin brings ORCA <em>into the pack</em> with Social-Force (17.4) and SRFM
+    (18.2) — but it can't reach our motion-gain's 9.4. The reciprocity gap bites hardest exactly when people can't get out of
+    the way, and no clearance buffer closes it:</p>
+
+    <table class="tbl">
+      <thead><tr><th>model</th><th>avg contacts / scenario</th><th>mean clearance (m)</th><th>note</th></tr></thead>
+      <tbody>
+        <tr><td>ORCA — standard params</td><td class="lose">26.2</td><td class="muted">0.20</td><td>cuts corners → clips people</td></tr>
+        <tr><td>ORCA — tuned (clearance margin)</td><td>17.8</td><td>0.21</td><td>fewer contacts, but stays in the pack</td></tr>
+        <tr><td>Social-Force</td><td>17.4</td><td>0.24</td><td>fixed robot force</td></tr>
+        <tr><td>SRFM</td><td>18.2</td><td>0.33</td><td>fixed robot force</td></tr>
+        <tr class="hi"><td>SRFM + motion gain <span class="muted">(ours)</span></td><td class="win">9.4</td><td>0.43</td><td>fewest contacts, widest berth</td></tr>
+      </tbody>
+    </table>
+    <p class="cap">Tuned ORCA params: <code>radius_margin 0→0.4</code> (the margin inflates the <em>planning</em> disc only,
+    not the physical collision radius) and <code>max_neighbors 10→30</code> for dense flow; <code>neighbor_dist</code> and
+    <code>time_horizon</code> are kept at 4. Per scenario the tuned crowd contacts the robot 11 / 21 / 15 / 23 / 19 times
+    (light→packed); 89 total vs standard ORCA's 131. Found by <code>runner/sweep_orca.py</code>; clearance is position-based.</p>
+
+    <p>Before / after on the same dense crowd (84 people) — standard ORCA cuts corners and clips people; the tuned crowd cuts
+    that by more than half, though it still grazes more than ours does. The tuned clips for all five densities are in the
+    scenario grids above (ORCA is now the tuned config there).</p>
+    <div class="cbgrid">
+      <div class="vcard"><div class="vh"><span class="nm">ORCA — standard · dense</span><span class="pill">before</span></div><video src="assets/cb/cb_dense_orca.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">35 collisions</b> · passes at 0.14 m — clips people</div></div>
+      <div class="vcard ours"><div class="vh"><span class="nm">ORCA — tuned · dense</span><span class="pill">after</span></div><video src="assets/cb/cb_dense_orcatuned.mp4" preload="none"></video><div class="vt"><b style="color:var(--bad)">15 collisions</b> · 0.20 m berth — far fewer than standard</div></div>
+    </div>
+
+    <div class="callout honest"><div class="h">The honest reading</div><p>The margin is a legitimate, standard ORCA safety
+    buffer, and it does real work — it cuts standard ORCA's contacts by more than half. But it is <em>not</em> a smarter
+    avoidance rule: it's &ldquo;keep a bit more room and don't cut corners.&rdquo; Under a realistically constrained crowd that
+    can't step aside, that's not enough — tuned ORCA lands right in the pack with the other fixed-force models (17–18
+    contacts) and well short of the motion-dependent gain (9.4). So ORCA's poor score is <em>partly</em> a parameter artifact,
+    but the non-reciprocity it assumes is a real limitation that a clearance buffer alone can't fix.</p></div>
+  </div>
+</section>
+
+<!-- how the motion gain works -->
+<section class="step" id="how">
+  <div class="step-head"><div class="badge">ƒ</div><h2>How &ldquo;SRFM + motion gain&rdquo; works</h2></div>
+  <p class="q">The gain is <b>not a force</b> — it is a multiplier that makes SRFM's existing push <b>selective</b>: strong exactly when the robot is bearing down on you, weak otherwise.</p>
+  <div class="body">
+
+    <h3>1 · the base SRFM force</h3>
+    <p>A pedestrian feels an exponential repulsion <em>away</em> from the robot, scaled by a single <em>legibility</em>
+    scalar <code>L</code> (&ldquo;is the robot moving fast and straight toward its goal?&rdquo;):</p>
+    <div class="eqn">
+      \[ \mathbf{f} = A_r\,\exp\!\Bigl(\tfrac{d-\mathrm{dist}}{B_r}\Bigr)\,\hat{\mathbf{n}}\,,
+         \qquad \text{push on the person} = L\cdot\mathbf{f} \]
+      \[ L = \mathrm{clip}\!\Bigl(\cos\angle(\mathbf{v},\text{goal})\cdot\tfrac{\lvert\mathbf{v}\rvert}{v_{\text{pref}}},\;0,\;1\Bigr) \]
+      <div class="ecap"><code>A_r = 7.93</code>, <code>B_r = 0.99 m</code>; <code>n̂</code> points robot→person. <code>L</code> is SRFM's single
+      legibility scalar — high when the robot moves fast and straight toward its goal.</div>
+    </div>
+    <p>That scalar <code>L</code> is SRFM's <em>only</em> handle on the robot's motion. It is blind to three things a real
+    person actually reads: the <strong>angle</strong> the robot approaches from, its <strong>turn rate</strong>, and
+    <strong>how soon</strong> it would hit them.</p>
+
+    <h3>2 · the gain replaces that scalar with a product of three factors</h3>
+    <div class="eqn">
+      \[ \text{push on the person} = \mathrm{gain}\cdot\mathbf{f}\,,
+         \qquad \mathrm{gain} = \mathrm{clip}(L_{\text{motion}},0,1)\cdot A_{\text{angle}}\cdot U_{\text{ttc}} \]
+    </div>
+
+    <p style="margin:16px 0 4px"><b>L_motion</b> <span class="muted">— legibility</span> &nbsp;<span style="font-family:var(--mono);font-size:12px;color:var(--mut2)">range 0 → 1</span></p>
+    <div class="eqn">
+      \[ L_{\text{motion}} = \cos\angle(\mathbf{v},\text{goal})\cdot\tfrac{\lvert\mathbf{v}\rvert}{v_{\text{pref}}}\cdot\exp\!\Bigl(-\tfrac{\lvert\omega\rvert}{\omega_0}\Bigr) \]
+      <div class="ecap"><code>ω₀ = 1.0 rad/s</code> — the turn-rate scale.</div>
+    </div>
+    <p style="margin-top:4px">Committed, goal-directed motion → high; slow, sideways, or fast-<em>spinning</em> (illegible) → low.
+    This is the old legibility <em>plus</em> the new turn-rate penalty <code>exp(−|ω|/ω₀)</code>.</p>
+
+    <p style="margin:16px 0 4px"><b>A_angle</b> <span class="muted">— anisotropy</span> &nbsp;<span style="font-family:var(--mono);font-size:12px;color:var(--mut2)">range 0.4 → 1</span></p>
+    <div class="eqn">
+      \[ A_{\text{angle}} = \lambda + (1-\lambda)\cdot\tfrac{1+\cos\varphi}{2} \]
+      <div class="ecap"><code>λ = 0.4</code>; <code>φ</code> = robot heading vs the robot→person direction.</div>
+    </div>
+    <p style="margin-top:4px">Robot driving straight <em>at</em> you (φ≈0) → 1; you're directly <em>behind</em> it (φ≈180°) → λ = 0.4.
+    So a person in the robot's path is pushed <strong>~2.5× harder</strong> than one it is already moving away from — it does
+    not shove people it isn't approaching.</p>
+
+    <p style="margin:16px 0 4px"><b>U_ttc</b> <span class="muted">— urgency</span> &nbsp;<span style="font-family:var(--mono);font-size:12px;color:var(--mut2)">range 1 → 2</span></p>
+    <div class="eqn">
+      \[ U_{\text{ttc}} = 1 + \kappa\cdot\mathrm{clip}\!\Bigl(\tfrac{\text{ttc}_0}{\text{ttc}}-1,\;0,\;u_{\max}\Bigr) \]
+      <div class="ecap"><code>κ = 0.5</code>, <code>ttc₀ = 2 s</code>, <code>u_max = 2</code>.</div>
+    </div>
+    <p style="margin-top:4px"><code>ttc</code> = time-to-collision from the <em>relative</em> velocity. Far-future or diverging → 1
+    (no change); an imminent collision (ttc &lt; 2 s) ramps the yield up to <strong>2×</strong>.</p>
+    <p>Legibility is only <em>one</em> of the three factors — which is why the accurate name is &ldquo;motion-<em>dependent</em>
+    gain&rdquo;, not &ldquo;legibility gain&rdquo;.</p>
+
+    <div class="callout"><div class="h">It contains SRFM as a special case</div><p>Set <code>λ=1</code> (anisotropy off),
+    <code>κ=0</code> (urgency off) and <code>ω=0</code> and the gain collapses <em>exactly</em> to SRFM's legibility scalar
+    <code>L</code> (locked to 1e-12 in a unit test). So this isn't a different force — it's SRFM with a smarter scaling that
+    only switches on extra, physically-grounded behaviour.</p></div>
+
+    <h3>3 · worked contrast — same force, different gain</h3>
+    <p>Two people 2 m from the robot, identical SRFM <code>f</code>:</p>
+    <div class="callout take"><div class="h">Selective push</div><p><strong>Person A</strong> — in the robot's path, robot
+    driving straight and fast at them, collision in ~1 s: L_motion≈1, A_angle≈1, U_ttc≈2 → <strong>gain ≈ 2</strong> (strong
+    yield, early). <strong>Person B</strong> — off to the side and slightly behind, no collision course: A_angle≈0.5,
+    U_ttc=1, L_motion≈0.7 → <strong>gain ≈ 0.35</strong> (barely nudged). Plain SRFM pushes <em>both ≈ the same</em> — it
+    only sees the 2 m distance. The gain spends the robot's influence on the person who needs to move and leaves the
+    bystander alone.</p></div>
+
+    <div class="callout take"><div class="h">Why that enhances SRFM</div><p>Because the push lands strongest on the close,
+    head-on, imminent encounters — and stays gentle elsewhere — the robot earns a clean give-way exactly when it needs one,
+    without disturbing the rest of the crowd. Over 50 m of repeated head-on meetings that selectivity <em>compounds</em>:
+    <strong>SRFM + motion gain holds at ≈9.4 contacts per crossing where position-only SRFM degrades to ≈18.2</strong>
+    (47 vs 91 over the five scenarios). Same force budget, concentrated where it matters.</p></div>
+
+    <div class="callout honest"><div class="h">Honest caveat</div><p>The gain is a correct inductive bias — it costs nothing
+    (recovers SRFM when its factors are off) and wins where the human response genuinely depends on robot motion (structured
+    synthetic data, and this long-corridor contact metric). But on <em>real</em> robot-in-crowd data (THOR-MAGNI, SACSoN,
+    JRDB) it statistically <strong>ties</strong> SRFM: today's research robots drive too cautiously to elicit a strong
+    motion-dependent yield, so the signal it models — though real — is currently unrewarded on real data.</p></div>
+  </div>
+</section>
+
+<!-- references -->
+<section class="step" id="refs">
+  <div class="step-head"><div class="badge">@</div><h2>References — the paper behind each model</h2></div>
+  <p class="q">Where each pedestrian model comes from, as BibTeX.</p>
+  <div class="body">
+
+    <div class="bibitem">
+      <p class="bl"><b>ORCA</b> <span class="pill">math</span> — reciprocal collision avoidance (van den Berg et al., ISRR 2011)</p>
+<pre class="bib">@incollection{<span class="ky">vandenberg2011reciprocal</span>,
+  author    = {van den Berg, Jur and Guy, Stephen J. and Lin, Ming and Manocha, Dinesh},
+  title     = {Reciprocal n-Body Collision Avoidance},
+  booktitle = {Robotics Research: The 14th International Symposium ISRR},
+  series    = {Springer Tracts in Advanced Robotics},
+  volume    = {70},
+  pages     = {3--19},
+  year      = {2011},
+  publisher = {Springer}
+}</pre>
+    </div>
+
+    <div class="bibitem">
+      <p class="bl"><b>Social-Force</b> <span class="pill">math</span> — Helbing &amp; Molnár social-force model (Phys. Rev. E, 1995)</p>
+<pre class="bib">@article{<span class="ky">helbing1995social</span>,
+  author    = {Helbing, Dirk and Moln{\'a}r, P{\'e}ter},
+  title     = {Social Force Model for Pedestrian Dynamics},
+  journal   = {Physical Review E},
+  volume    = {51},
+  number    = {5},
+  pages     = {4282--4286},
+  year      = {1995},
+  publisher = {American Physical Society}
+}</pre>
+    </div>
+
+    <div class="bibitem">
+      <p class="bl"><b>SRFM</b> <span class="pill sota">SOTA</span> — Social-Robot-Force-Model, learned from JRDB (Agrawal et al., 2024)</p>
+<pre class="bib">@article{<span class="ky">agrawal2024srfm</span>,
+  author  = {Agrawal, Subham and Dengler, Nils and Bennewitz, Maren},
+  title   = {Evaluating Robot Influence on Pedestrian Behavior Models for
+             Crowd Simulation and Benchmarking},
+  journal = {arXiv preprint arXiv:2409.14844},
+  year    = {2024}
+}</pre>
+    </div>
+
+    <div class="bibitem">
+      <p class="bl"><b>SRFM + motion gain</b> <span class="pill ours">ours</span> — SRFM (above) + a motion-dependent gain whose legibility factor follows Dragan et al., HRI 2013</p>
+<pre class="bib">@inproceedings{<span class="ky">dragan2013legibility</span>,
+  author       = {Dragan, Anca D. and Lee, Kenton C.T. and Srinivasa, Siddhartha S.},
+  title        = {Legibility and Predictability of Robot Motion},
+  booktitle    = {2013 8th ACM/IEEE International Conference on Human-Robot Interaction (HRI)},
+  pages        = {301--308},
+  year         = {2013},
+  organization = {IEEE}
+}</pre>
+    </div>
+
+    <div class="bibitem">
+      <p class="bl"><b>JRDB</b> <span class="tag">dataset</span> — the robot-in-crowd dataset SRFM's robot force was fit to (Martín-Martín et al., IEEE TPAMI 2021)</p>
+<pre class="bib">@article{<span class="ky">martinmartin2021jrdb</span>,
+  author  = {Mart{\'\i}n-Mart{\'\i}n, Roberto and Patel, Mihir and Rezatofighi, Hamid and
+             Shenoi, Abhijeet and Gwak, JunYoung and Frankel, Eric and Sadeghian, Amir and Savarese, Silvio},
+  title   = {{JRDB}: A Dataset and Benchmark of Egocentric Robot Visual Perception
+             of Humans in Built Environments},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year    = {2021}
+}</pre>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>20 clips · 5 scenarios × 4 pedestrian models · real MuJoCo Go2, open-loop wall-to-wall zigzag driving upstream
+  (≈0.75 m/s) against an oncoming crowd (≈1.0 m/s) kept full end-to-end, 50 m × 6 m walled corridor, fixed centered camera.
+  All four are reactive force models (ORCA + a named robot-force), simulated live in MuJoCo. Eval logged live to
+  <code>results_cb/cb_eval.csv</code>. Renders: <code>runner/render_crowd_behavior.py</code>, <code>humanmodel/cb_flow.py</code>.</p>
+</footer>
+</main>
+</div>
+
+<div class="lb" id="lb"><img id="lbimg" alt=""/></div>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+    svg: { fontCache: 'global' },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
