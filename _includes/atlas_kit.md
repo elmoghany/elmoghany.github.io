@@ -8,7 +8,7 @@
   <li><a href="/atlas-kit/b1/"><strong>b1</strong></a>: GR00T N1.6 on Unitree G1: reproduction <em>(final)</em></li>
   <li><a href="/atlas-kit/b1.1/"><strong>b1.1</strong></a>: released-checkpoint eval, seed 0 <em>(final)</em></li>
   <li><a href="/atlas-kit/b1.2/"><strong>b1.2</strong></a>: resource-only rerun of seeds 1-2 (64G to 160G RAM) <em>(final)</em></li>
-  <li><strong>b2</strong> (page coming): ATLAS Navigator proxy reproduction (overview) <em>(preliminary)</em></li>
+  <li><a href="/atlas-kit/b2/"><strong>b2</strong></a>: ATLAS Navigator proxy reproduction (overview) <em>(preliminary)</em></li>
   <li><strong>b2.1</strong> (page coming): scorer pre-registration: GT oracle v2 and vertex ceiling <em>(preliminary)</em></li>
   <li><strong>b2.2</strong> (page coming): ConceptGraphs ViT-H anchor: environment build <em>(preliminary)</em></li>
   <li><strong>b2.3</strong> (page coming): ConceptGraphs build fixes and first full scene <em>(preliminary)</em></li>
