@@ -16,5 +16,5 @@
   <li><a href="/atlas-kit/b2.5/"><strong>b2.5</strong></a>: ATLAS replay fixes, seed-0 Replica-8 scoring, HM3D VRAM <em>(preliminary)</em></li>
   <li><a href="/atlas-kit/b2.6/"><strong>b2.6</strong></a>: seed-0 checkpoint record and the gate stage <em>(preliminary)</em></li>
   <li><a href="/atlas-kit/b2.7/"><strong>b2.7</strong></a>: diagnostics: why ATLAS scores ~0 on Replica <em>(preliminary)</em></li>
-  <li><strong>sim harness</strong> (page coming): Closed-loop simulation harness (Isaac Sim + Unitree G1) <em>(preliminary)</em></li>
+  <li><a href="/atlas-kit/sim-harness/"><strong>sim harness</strong></a>: Closed-loop simulation harness (Isaac Sim + Unitree G1) <em>(preliminary)</em></li>
 </ul>
