@@ -14,7 +14,7 @@
   <li><a href="/atlas-kit/b2.3/"><strong>b2.3</strong></a>: ConceptGraphs build fixes and first full scene <em>(preliminary)</em></li>
   <li><a href="/atlas-kit/b2.4/"><strong>b2.4</strong></a>: ConceptGraphs anchor on 8 Replica scenes: scorer validated <em>(preliminary)</em></li>
   <li><a href="/atlas-kit/b2.5/"><strong>b2.5</strong></a>: ATLAS replay fixes, seed-0 Replica-8 scoring, HM3D VRAM <em>(preliminary)</em></li>
-  <li><strong>b2.6</strong> (page coming): seed-0 checkpoint record and the gate stage <em>(preliminary)</em></li>
+  <li><a href="/atlas-kit/b2.6/"><strong>b2.6</strong></a>: seed-0 checkpoint record and the gate stage <em>(preliminary)</em></li>
   <li><strong>b2.7</strong> (page coming): diagnostics: why ATLAS scores ~0 on Replica <em>(preliminary)</em></li>
   <li><strong>sim harness</strong> (page coming): Closed-loop simulation harness (Isaac Sim + Unitree G1) <em>(preliminary)</em></li>
 </ul>
