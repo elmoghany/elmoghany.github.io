@@ -10,7 +10,7 @@
   <li><a href="/atlas-kit/b1.2/"><strong>b1.2</strong></a>: resource-only rerun of seeds 1-2 (64G to 160G RAM) <em>(final)</em></li>
   <li><a href="/atlas-kit/b2/"><strong>b2</strong></a>: ATLAS Navigator proxy reproduction (overview) <em>(preliminary)</em></li>
   <li><a href="/atlas-kit/b2.1/"><strong>b2.1</strong></a>: scorer pre-registration: GT oracle v2 and vertex ceiling <em>(preliminary)</em></li>
-  <li><strong>b2.2</strong> (page coming): ConceptGraphs ViT-H anchor: environment build <em>(preliminary)</em></li>
+  <li><a href="/atlas-kit/b2.2/"><strong>b2.2</strong></a>: ConceptGraphs ViT-H anchor: environment build <em>(preliminary)</em></li>
   <li><strong>b2.3</strong> (page coming): ConceptGraphs build fixes and first full scene <em>(preliminary)</em></li>
   <li><strong>b2.4</strong> (page coming): ConceptGraphs anchor on 8 Replica scenes: scorer validated <em>(preliminary)</em></li>
   <li><strong>b2.5</strong> (page coming): ATLAS replay fixes, seed-0 Replica-8 scoring, HM3D VRAM <em>(preliminary)</em></li>
