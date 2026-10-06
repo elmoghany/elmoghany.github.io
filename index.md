@@ -36,6 +36,7 @@ I have <strong> over 10 years</strong> of multi-disciplinary research, entrepren
 {% include_relative _includes/news.md %}
 {% include_relative _includes/publications.md %}
 {% include_relative _includes/preprints.md %}
+{% include_relative _includes/atlas_kit.md %}
 
 # Academic and Industry Experience
 - [2025 - 2026] Visiting Researcher @ SVL Lab ( Prof. Jiajun Wu ) <strong>@ Stanford University</strong>
